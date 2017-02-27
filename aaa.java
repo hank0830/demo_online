@@ -44,7 +44,7 @@ class aaa{
 		System.out.println();
 		System.out.println("請問來了幾位參與者？");
 		totalMember = scn.nextInt();
-		System.out.println("請輸入他們的身份與密鑰");
+		System.out.println("請輸入他們的身份與密鑰:");
 
 
 		for(int i = 1 ;i <=totalMember ;i++){
