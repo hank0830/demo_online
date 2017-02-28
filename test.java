@@ -1,3 +1,4 @@
+// package demo_local;
 import java.util.*;
 import java.util.Scanner;
 public class test{
