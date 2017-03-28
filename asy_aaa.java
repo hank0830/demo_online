@@ -59,7 +59,8 @@ class asy_aaa{
 			System.out.println("輸入第" + i + "秘密權杖");
 			key0[i] = scn.nextInt();//key0是要輸入pi計算的c1+c2值
 		}
-
+		System.out.println("/******************************/");
+		System.out.println("這邊是我們把驗證成員輸入的ci值做加總");
 		for(int i = 1 ; i <= totalMember ; i++ ){
 			auth = auth + key0[i];
 			auth = auth % modnumber;
@@ -72,6 +73,7 @@ class asy_aaa{
 		}
 		System.out.println("驗證成員的總和" + auth);//目的是來看驗證成員的s'總合是否一樣
 
+		System.out.println("/******************************/");
 
 		ModInverse[] inv_1 = new ModInverse[totalMember+1];//建構物件陣列計算每個分母的反元素
 		ModInverse[] inv_2 = new ModInverse[totalMember+1];
@@ -79,7 +81,8 @@ class asy_aaa{
 		int[] kk = new int[totalMember+1];//存反元素後的值		
 		/*群組管理者計算驗證的s = ∑j=1~k，djfj(wj) mod p*/
 
-		
+		System.out.println("/******************************/");		
+		System.out.println("這邊是計算s=djfj(wj)的總和");
 			s1 = d1 *test.eval(w1); 
 			System.out.println("第一條Ci : "+s1);
 			s2 = d2 *test1.eval(w2);
@@ -87,6 +90,9 @@ class asy_aaa{
 
 			s0 = s1 + s2;
 			System.out.println("祕鑰s為 :" + (s0%modnumber));
+		System.out.println("/******************************/");		
+
+
 
 		/*以下是c1演算*/
 
@@ -145,7 +151,7 @@ class asy_aaa{
 			System.out.println("第" + i + "個使用者第一條方程式的值：" + key1[i]);
 			System.out.println("第" + i + "個使用者第二條方程式的值：" + key2[i]);
 			secret_token[i] = key1[i] + key2[i];
-			System.out.println("第" + i + "個使用者送出的Ci值為：" + secret_token[i]);
+			System.out.println("第" + i + "個使用者送出的Ci值為secret_token：" + secret_token[i]);
 			ooo = 1;
 			xxx = 1;
 			upon_1 = 1;
@@ -183,23 +189,15 @@ class asy_aaa{
         System.out.println("加密後我們所要求的s'為："+sum2);
         System.out.println("驗證所輸出的 s' 值 :"+ ((sum1+sum2)%modnumber));
 
-		for(int i = 1 ;i <= totalMember ; i++){
+		// for(int i = 1 ;i <= totalMember ; i++){
 
-			System.out.println("每個成員所送出的ci值加總" + secret_token[i]);
-			secret_token_total += secret_token[i];
-		}
-       
-
-
-
+		// 	System.out.println("第" + i + "所送出的ci值加總" + secret_token[i]);
+		// 	secret_token_total += secret_token[i];
+		// }
         /*以上是c1演算*/
     	
 
-
-
-
-
-        if( auth ==(s0%modnumber)){
+        if( auth ==(s0%modnumber)){//auth為參與驗證成員所輸入的秘密值加總
             System.out.println("驗證成功");
 	        }
 	    else{
