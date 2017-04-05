@@ -6,6 +6,7 @@ class asy_aaa{
 		
 		int w1 = 6, w2 = 7,d1 = 1,d2 = 12;//輸入的兩個正整數
 		int modnumber = 0;//選擇的質數
+		int num_ans = 0;
 		int totalMember = 0;//總共來幾位成員
 		int mon = 1,upon_1 = 1,upon_2 = 1,montotal=1,ooo = 1,xxx=1;
 		//mon:分母   upon:分子   montotal:分母的連乘 ooo:分子*乘法反元素(第一條)  xxx:分子*乘法反元素(第二條)
@@ -58,6 +59,7 @@ class asy_aaa{
 			num[i] = scn.nextInt();
 			System.out.println("輸入第" + i + "秘密權杖");
 			key0[i] = scn.nextInt();//key0是要輸入pi計算的c1+c2值
+			
 		}
 		System.out.println("/******************************/");
 		System.out.println("這邊是我們把驗證成員輸入的ci值做加總");
@@ -139,19 +141,24 @@ class asy_aaa{
 			}
 
 
-
+			num_ans = num[i];//這個是在抓每個成員的編號
 	 		ooo = upon_1 * qq[i];	//第一條Ci的分子乘反元素qq[i]
 			// System.out.println(qq[i]);
  			xxx = upon_2 * kk[i];//第二條Ci計算
  			// System.out.println("計算結果realse的值" + xxx);
 
-			key1[i] = d1*(a_ans[i] * ooo) % modnumber;
-			key2[i] = d2*(b_ans[i] * xxx)% modnumber;
+			key1[i] = d1*(a_ans[num_ans] * ooo) % modnumber;
+			key2[i] = d2*(b_ans[num_ans] * xxx)% modnumber;
 
 			System.out.println("第" + i + "個使用者第一條方程式的值：" + key1[i]);
 			System.out.println("第" + i + "個使用者第二條方程式的值：" + key2[i]);
 			secret_token[i] = key1[i] + key2[i];
-			System.out.println("第" + i + "個使用者送出的Ci值為secret_token：" + secret_token[i]);
+
+			if(secret_token[i]>modnumber){
+				secret_token[i]= secret_token[i] - modnumber;
+			}
+
+			System.out.println("第" + i + "個使用者送出的Ci值：" + secret_token[i]);
 			ooo = 1;
 			xxx = 1;
 			upon_1 = 1;
@@ -185,8 +192,8 @@ class asy_aaa{
 		}
 
 
-        System.out.println("加密後我們所要求的s'為："+sum1);
-        System.out.println("加密後我們所要求的s'為："+sum2);
+        // System.out.println("加密後我們所要求的s'_1為："+sum1);
+        // System.out.println("加密後我們所要求的s'_2為："+sum2);
         System.out.println("驗證所輸出的 s' 值 :"+ ((sum1+sum2)%modnumber));
 
 		// for(int i = 1 ;i <= totalMember ; i++){
@@ -195,17 +202,12 @@ class asy_aaa{
 		// 	secret_token_total += secret_token[i];
 		// }
         /*以上是c1演算*/
-    	
 
-        if( auth ==(s0%modnumber)){//auth為參與驗證成員所輸入的秘密值加總
+        if(auth ==(s0%modnumber)){//auth為參與驗證成員所輸入的秘密值加總
             System.out.println("驗證成功");
 	        }
 	    else{
           	System.out.println("驗證失敗");
             }
-
-
-
-
 	}
 }
