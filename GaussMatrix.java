@@ -22,28 +22,53 @@ public class GaussMatrix
     {
         numEq=equations;
         m=new int[numEq][numEq];
-        constants=new int[numEq];
+        constants=new int[numEq+1];
         solution=new int[numEq];
     }//初始化、建構子
-    
-    public void fillMatrix()
-    {
-        for(int i=0;i<numEq;i++){
-            System.out.println("Enter the co-efficients of unknowns and constant term for Equation "+(i+1)+" :");
-            for(int j=0;j<numEq;j++){
-                System.out.println("Enter Co-efficient "+(j+1)+" : ");
-                m[i][j]=sc.nextInt();
-            }//這邊再輸入每一個x,y,z的常數項
-            System.out.println("Enter Constant Term : ");
-            constants[i]=sc.nextInt();
-        }//這邊輸入第x條常數的過增矩陣(方程式的解)
+
+	public void fillMatrix(int aaa,int bbb,int ccc,int ddd){
+
+		m[0][0]=aaa;
+        m[0][1]=bbb;
+        m[1][0]=ccc;
+        m[1][1]=ddd;
+        // for(int i=0;i<2;i++){
+        //     for(int j=0;j<2;j++){
+        //         m[i][j]=ddd[i][j];
+        //     }//這邊再輸入每一個x,y,z的常數項
+        // }
     }
+
+    public void constants(int eee,int fff){
+
+        constants[0]=eee;
+        constants[1]=fff;
+
+    	// for(int i = 0;i<2;i++){
+    	// 	constants[i]=eee[i];
+    	// }	
+    }//這邊輸入第x條常數的過增矩陣(方程式的解)
+    
+    // public void fillMatrix()
+    // {
+    //     for(int i=0;i<numEq;i++){
+    //         System.out.println("輸入第 "+(i+1)+" 方程式的係數個別為:");
+    //         for(int j=0;j<numEq;j++){
+    //             System.out.println("輸入第 "+(j+1)+" 項係數： ");
+    //             m[i][j]=sc.nextInt();
+    //         }//這邊再輸入每一個x,y,z的常數項
+    //         System.out.println("輸入第 : " + (i+1) + "方程式的解：");
+    //         constants[i]=sc.nextInt();
+    //     }//這邊輸入第x條常數的過增矩陣(方程式的解)
+    // }
     
     public void printSolution()
     {
-        System.out.println("\nSolution Set is : ");
-        for(int i=0;i<numEq;i++)
-            System.out.println((char)('A'+i)+" = "+solution[i]);
+        // System.out.println("\nSolution Set is : ");
+        for(int i=0;i<numEq;i++){
+        	System.out.println("第"+ (i+1)+ "條方程式的秘密權杖 = " + solution[i]);
+            // System.out.println((char)('A'+i)+" = "+solution[i]);
+    	}
     }//印出解答//這邊用char是要抓ascii code
     
     public void printMatrix()   
@@ -51,7 +76,7 @@ public class GaussMatrix
         for(int i=0;i<numEq;i++){
             for(int j=0;j<numEq;j++){
                 if(m[i][j]>=0)
-                    System.out.print(" +"+m[i][j]+((char)('A'+j))+" ");
+                    System.out.print(" "+m[i][j]+((char)('A'+j))+" ");
                 else if(m[i][j]<0)
                     System.out.print(" "+m[i][j]+((char)('A'+j))+" ");
             }
@@ -137,15 +162,15 @@ public class GaussMatrix
         }
     }
     
-    public static void main(String args[])
-    {
-        System.out.print("Enter the Number of Terms : ");
-        GaussMatrix obj=new GaussMatrix(sc.nextInt());
-        obj.fillMatrix();
-        System.out.println("\fYou Have Entered The Following Equations :");
-        obj.printMatrix();
-        obj.eliminate();
-        obj.solve();
-        obj.printSolution();
-    }
+    // public static void main(String args[])
+    // {
+    //     System.out.print("Enter the Number of Terms : ");
+    //     GaussMatrix obj=new GaussMatrix(2);
+    //     obj.fillMatrix();
+    //     System.out.println("\fYou Have Entered The Following Equations :");
+    //     obj.printMatrix();
+    //     obj.eliminate();
+    //     obj.solve();
+    //     obj.printSolution();
+    // }
 }

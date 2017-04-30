@@ -17,13 +17,13 @@ public class ModInverse{
 		}
 		else{
 			if(b!=1) throw
-				new ArithmeticException("乘法反元素不存在");
+				new ArithmeticException("未取得其他成員之權杖資訊");
 			return(c[0]>0)?c[0]:c[0]+c[1];
 		}
 	}
 	// public static void main(String[] args){
 
-	// 	int a = 120,b=5;
+	// 	int a = 10,b=13;
 		
 	// 	ModInverse pp = new ModInverse();
 	// 	// pp = new ModInverse();
