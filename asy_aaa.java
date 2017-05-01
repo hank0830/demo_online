@@ -107,9 +107,14 @@ class asy_aaa{
 					mon = (num[i] - num[j]);
 					// 分母
 					upon_1 = upon_1 * (w1-num[j]);
+					if(upon_1==0){
+						upon_1+=1;
 	                // 第一條方程式 計算分子  (wj-xr)
 
 	                upon_2 = upon_2 * (w2-num[j]);
+	                if(upon_2==0){
+	                	upon_2+=1;
+	                }
 					
 					montotal = montotal * mon;
 					// System.out.println("montotal ="+montotal );
@@ -190,8 +195,6 @@ class asy_aaa{
 				secret_token[i] += modnumber;
 			}
 		}
-
-
         // System.out.println("加密後我們所要求的s'_1為："+sum1);
         // System.out.println("加密後我們所要求的s'_2為："+sum2);
         System.out.println("驗證所輸出的 s' 值 :"+ ((sum1+sum2)%modnumber));

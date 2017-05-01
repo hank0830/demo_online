@@ -9,16 +9,16 @@ class Break_token {
 		ArrayList<MyData> list = new ArrayList<MyData>();
 		ArrayList listOfc1 = new ArrayList();
 		ArrayList listOfc2 = new ArrayList();
-		int[][] user1 = new int[2][2];//建立每一個user的破解矩陣
-		int[][] user2 = new int[2][2];
-		int[][] user3 = new int[2][2];
-		int[][] user4 = new int[2][2];
-		int[][] user5 = new int[2][2];
-		int[][] user6 = new int[2][2];
-		int[][] user7 = new int[2][2];
-		int[][] user8 = new int[2][2];
-		int[][] user9 = new int[2][2];
-		int[][] user10 = new int[2][2];
+		Object[][] user1 = new Object[2][2];//建立每一個user的破解矩陣
+		Object[][] user2 = new Object[2][2];
+		Object[][] user3 = new Object[2][2];
+		Object[][] user4 = new Object[2][2];
+		Object[][] user5 = new Object[2][2];
+		Object[][] user6 = new Object[2][2];
+		Object[][] user7 = new Object[2][2];
+		Object[][] user8 = new Object[2][2];
+		Object[][] user9 = new Object[2][2];
+		Object[][] user10 = new Object[2][2];
 		int[] secret_token_1= new int[3];//存每個成員釋出的Ci
 		int[] secret_token_2= new int[3];
 		int[] secret_token_3= new int[3];
@@ -65,24 +65,24 @@ class Break_token {
 			System.out.println("請選擇一個質數");
 			modnumber = scn.nextInt();
 
-		do{	
+			do{	
 
 
 
 
 			// System.out.println("若有十位成員，十位成員的身份為");
-			for(int i = 1;i<=10;i++){
+				for(int i = 1;i<=10;i++){
 				// System.out.println("第"+ i + "位成員的第一條方程式權杖");
 				// System.out.print("秘密權杖為：");
 				// System.out.println(test.eval(i)%modnumber);
-				a_ans[i] = test.eval(i)%modnumber;
+					a_ans[i] = test.eval(i)%modnumber;
 				// System.out.println("第"+ i + "位成員的第二條方程式權杖");
 				// System.out.println(test1.eval(i)%modnumber);
-				b_ans[i] = test1.eval(i)%modnumber;
-			}
+					b_ans[i] = test1.eval(i)%modnumber;
+				}
 
-			/*開始驗證*/
-			System.out.println("請問一共有幾位成員參與驗證？");
+				/*開始驗證*/
+				System.out.println("請問一共有幾位成員參與驗證？");
 			totalMember = scn.nextInt();//輸入本次參與人數
 			System.out.println("請問該次參與其他成員為？");
 
@@ -122,9 +122,15 @@ class Break_token {
 	            		mon = (num[i] - num[j]);
 						// 分母
 	            		upon_1 = upon_1 * (w1-num[j]);
+	            		if(upon_1==0){
+	            			upon_1+=1;
+	            		}
 		                // 第一條方程式 計算分子  (wj-xr)
 
 	            		upon_2 = upon_2 * (w2-num[j]);
+	            		if(upon_2==0){
+	            			upon_2+=1;
+	            		}
 
 	            		montotal = montotal * mon;
 						// System.out.println("montotal ="+montotal );
@@ -170,23 +176,23 @@ class Break_token {
 				// System.out.println("第" + i + "個使用者第一條方程式的值：" + key1[i]);
 				// System.out.println("第" + i + "個使用者第二條方程式的值：" + key2[i]);
 
-	 			secret_token[i] = key1[i] + key2[i];
+				secret_token[i] = key1[i] + key2[i];
 
-	 			if(secret_token[i]>modnumber){
-	 				secret_token[i]= secret_token[i] - modnumber;
-	 			}
-	 			ooo = 1;
-	 			xxx = 1;
-	 			upon_1 = 1;
-	 			upon_2 = 1;
-	 			montotal = 1;
-	 			mon = 1;
-	 			sum1 = sum1 + key1[i];
-	 			sum2 = sum2 + key2[i];
-	 			secret_token[i] = secret_token[i] % modnumber;
-	 			if(secret_token[i]<0){
-	 				secret_token[i]+=modnumber;
-	 			}
+				if(secret_token[i]>modnumber){
+					secret_token[i]= secret_token[i] - modnumber;
+				}
+				ooo = 1;
+				xxx = 1;
+				upon_1 = 1;
+				upon_2 = 1;
+				montotal = 1;
+				mon = 1;
+				sum1 = sum1 + key1[i];
+				sum2 = sum2 + key2[i];
+				secret_token[i] = secret_token[i] % modnumber;
+				if(secret_token[i]<0){
+					secret_token[i]+=modnumber;
+				}
 
 
 			}//迴圈外層結束
@@ -247,155 +253,150 @@ class Break_token {
 	        System.out.println("按 y 繼續 ，任意鍵跳脫：");
 	        s = check.next();
 	        if(s.equals("y")){
-	    for(int i = 1 ; i <= totalMember ; i++) {
-    		switch( num[i]) {
-     		   case 1 :
-            		user1[0][0] = guess_1[i];
-        		    user1[0][1] = guess_2[i]; 
-		            secret_token_1[1]=secret_token[i];//存每個成員釋出的Ci
-            		break;
-       		 case 2 :
-      		      user2[0][0] = guess_1[i];
-     		       user2[0][1] = guess_2[i];
-      		      secret_token_2[1]=secret_token[i];//存每個成員釋出的Ci 
-     		       break;
-     		 case 3 :
-         		user3[0][0] = guess_1[i];
-           		user3[0][1] = guess_2[i]; 
-          		secret_token_3[1]=secret_token[i];//存每個成員釋出的Ci
-         		break;
-       		 case 4 :
-        		    user4[0][0] = guess_1[i];
-            		user4[0][1] = guess_2[i]; 
-            		secret_token_4[1]=secret_token[i];//存每個成員釋出的Ci
-            		break;
-        	case 5 :
-            	user5[0][0] = guess_1[i];
-            	user5[0][1] = guess_2[i]; 
-        	    secret_token_5[1]=secret_token[i];//存每個成員釋出的Ci
-            	break;
-        	case 6 :
-            	user6[0][0] = guess_1[i];
-            	user6[0][1] = guess_2[i]; 
-            	secret_token_6[1]=secret_token[i];//存每個成員釋出的Ci
-            	break;
-        	case 7 :
-            	user7[0][0] = guess_1[i];
-            	user7[0][1] = guess_2[i]; 
-            	secret_token_7[1]=secret_token[i];//存每個成員釋出的Ci
-            	break;
-        	case 8 :
-            	user8[0][0] = guess_1[i];
-            	user8[0][1] = guess_2[i]; 
-            	secret_token_8[1]=secret_token[i];//存每個成員釋出的Ci
-            	break;
-        	case 9 :
-            	user9[0][0] = guess_1[i];
-            	user9[0][1] = guess_2[i];
-            	secret_token_9[1]=secret_token[i];//存每個成員釋出的Ci 
-            	break;
-        	case 10 :
-            	user10[0][0] = guess_1[i];
-            	user10[0][1] = guess_2[i]; 
-            	secret_token_10[1]=secret_token[i];//存每個成員釋出的Ci
-            	break;
-        	default:
-           		System.out.println("error, input");
-            	continue;
-    	}
-	}
+	        	for(int i = 1 ; i <= totalMember ; i++) {
+	        		switch( num[i]) {
+	        			case 1 :
+	        			user1[0][0] = guess_1[i];
+	        			user1[0][1] = guess_2[i]; 
+		            	secret_token_1[1]=secret_token[i];//存每個成員釋出的Ci
+		            	break;
+		            	case 2 :
+		            	user2[0][0] = guess_1[i];
+		            	user2[0][1] = guess_2[i];
+      		      		secret_token_2[1]=secret_token[i];//存每個成員釋出的Ci 
+      		      		break;
+      		      		case 3 :
+      		      		user3[0][0] = guess_1[i];
+      		      		user3[0][1] = guess_2[i]; 
+          				secret_token_3[1]=secret_token[i];//存每個成員釋出的Ci
+          				break;
+          				case 4 :
+          				user4[0][0] = guess_1[i];
+          				user4[0][1] = guess_2[i]; 
+            			secret_token_4[1]=secret_token[i];//存每個成員釋出的Ci
+            			break;
+            			case 5 :
+            			user5[0][0] = guess_1[i];
+            			user5[0][1] = guess_2[i]; 
+        	    		secret_token_5[1]=secret_token[i];//存每個成員釋出的Ci
+        	    		break;
+        	    		case 6 :
+        	    		user6[0][0] = guess_1[i];
+        	    		user6[0][1] = guess_2[i]; 
+            			secret_token_6[1]=secret_token[i];//存每個成員釋出的Ci
+            			break;
+            			case 7 :
+            			user7[0][0] = guess_1[i];
+            			user7[0][1] = guess_2[i]; 
+            			secret_token_7[1]=secret_token[i];//存每個成員釋出的Ci
+            			break;
+            			case 8 :
+            			user8[0][0] = guess_1[i];
+            			user8[0][1] = guess_2[i]; 
+            			secret_token_8[1]=secret_token[i];//存每個成員釋出的Ci
+            			break;
+            			case 9 :
+            			user9[0][0] = guess_1[i];
+            			user9[0][1] = guess_2[i];
+            			secret_token_9[1]=secret_token[i];//存每個成員釋出的Ci 
+            			break;
+            			case 10 :
+            			user10[0][0] = guess_1[i];
+            			user10[0][1] = guess_2[i]; 
+            			secret_token_10[1]=secret_token[i];//存每個成員釋出的Ci
+            			break;
+            			default:
+            			System.out.println("error, input");
+            			continue;
+            		}
+            	}
 
 
-	        	// for(int i = 1;i<=totalMember;i++){
-	        	// nnn = num[i];
-	      	 	// ttt = secret_token[i];
-	   			////System.out.println(nnn);
-	   			////System.out.println(ttt);
-				//// MyData breakdata = new MyData(nnn,ttt);
-				// list.add(new MyData(nnn,ttt));
-				// }
-				// for(int i = 0;i<list.size();i++){
-				// System.out.println("Person at index" + i);
-				// MyData data = list.get(i);
-				// System.out.println("USERID =" + data.getUserID());
-				// System.out.println("UserRealse = " + data.getSentValue());
-				// System.out.println("------------------------------");
-				// }
-				//// for(int i = 1;i<=totalMember;i++){
-				//// 	System.out.println("User" + (i) + "=C11 + C12 = 成員送出的Ci-->" + guess_1[i] + "+" + guess_2[i]);
-				//// }
+	        // for(int i = 1;i<=totalMember;i++){
+	        // nnn = num[i];
+	      	// ttt = secret_token[i];
+	   		////System.out.println(nnn);
+	   		////System.out.println(ttt);
+			//// MyData breakdata = new MyData(nnn,ttt);
+			// list.add(new MyData(nnn,ttt));
+			// }
+			// for(int i = 0;i<list.size();i++){
+			// System.out.println("Person at index" + i);
+			// MyData data = list.get(i);
+			// System.out.println("USERID =" + data.getUserID());
+			// System.out.println("UserRealse = " + data.getSentValue());
+			// System.out.println("------------------------------");
+			// }
+			//// for(int i = 1;i<=totalMember;i++){
+			//// 	System.out.println("User" + (i) + "=C11 + C12 = 成員送出的Ci-->" + guess_1[i] + "+" + guess_2[i]);
+			//// }
 
 
-				// for(int i = 0 ;i<list.size();i++){
+			// for(int i = 0 ;i<list.size();i++){
+			// 	MyData data = list.get(i);
+			// 	System.out.println("第" + data.getUserID()+"成員算式為："+ listOfc1.get(i) + "+" + listOfc2.get(i)+ "=" + data.getSentValue());
+			// }
+            }
+        }while(s.equals("y"));
 
-
-				// 	MyData data = list.get(i);
-				// 	System.out.println("第" + data.getUserID()+"成員算式為："+ listOfc1.get(i) + "+" + listOfc2.get(i)+ "=" + data.getSentValue());
-
-				// }
-				
-
-	        }
-	    }while(s.equals("y"));
-
-	    for(int i = 1 ; i <= totalMember ; i++) {
-    		switch( num[i]) {
-     		   case 1 :
-            		user1[1][0] = guess_1[i];
-        		    user1[1][1] = guess_2[i]; 
-		            secret_token_1[2]=secret_token[i];//存每個成員釋出的Ci
-            		break;
-       		 case 2 :
-      		      user2[1][0] = guess_1[i];
-     		       user2[1][1] = guess_2[i];
-      		      secret_token_2[2]=secret_token[i];//存每個成員釋出的Ci 
-     		       break;
-     		 case 3 :
-         		user3[1][0] = guess_1[i];
-           		user3[1][1] = guess_2[i]; 
+        for(int i = 1 ; i <= totalMember ; i++) {
+        	switch( num[i]) {
+        		case 1 :
+        		user1[1][0] = guess_1[i];
+        		user1[1][1] = guess_2[i]; 
+		        secret_token_1[2]=secret_token[i];//存每個成員釋出的Ci
+		        break;
+		        case 2 :
+		        user2[1][0] = guess_1[i];
+		        user2[1][1] = guess_2[i];
+      		    secret_token_2[2]=secret_token[i];//存每個成員釋出的Ci 
+      		    break;
+      		    case 3 :
+      		    user3[1][0] = guess_1[i];
+      		    user3[1][1] = guess_2[i]; 
           		secret_token_3[2]=secret_token[i];//存每個成員釋出的Ci
-         		break;
-       		 case 4 :
-        		    user4[1][0] = guess_1[i];
-            		user4[1][1] = guess_2[i]; 
-            		secret_token_4[2]=secret_token[i];//存每個成員釋出的Ci
-            		break;
-        	case 5 :
+          		break;
+          		case 4 :
+          		user4[1][0] = guess_1[i];
+          		user4[1][1] = guess_2[i]; 
+            	secret_token_4[2]=secret_token[i];//存每個成員釋出的Ci
+            	break;
+            	case 5 :
             	user5[1][0] = guess_1[i];
             	user5[1][1] = guess_2[i]; 
         	    secret_token_5[2]=secret_token[i];//存每個成員釋出的Ci
-            	break;
-        	case 6 :
-            	user6[1][0] = guess_1[i];
-            	user6[1][1] = guess_2[i]; 
+        	    break;
+        	    case 6 :
+        	    user6[1][0] = guess_1[i];
+        	    user6[1][1] = guess_2[i]; 
             	secret_token_6[2]=secret_token[i];//存每個成員釋出的Ci
             	break;
-        	case 7 :
+            	case 7 :
             	user7[1][0] = guess_1[i];
             	user7[1][1] = guess_2[i]; 
             	secret_token_7[2]=secret_token[i];//存每個成員釋出的Ci
             	break;
-        	case 8 :
+            	case 8 :
             	user8[1][0] = guess_1[i];
             	user8[1][1] = guess_2[i]; 
             	secret_token_8[2]=secret_token[i];//存每個成員釋出的Ci
             	break;
-        	case 9 :
+            	case 9 :
             	user9[1][0] = guess_1[i];
             	user9[1][1] = guess_2[i];
             	secret_token_9[2]=secret_token[i];//存每個成員釋出的Ci 
             	break;
-        	case 10 :
+            	case 10 :
             	user10[1][0] = guess_1[i];
             	user10[1][1] = guess_2[i]; 
             	secret_token_10[2]=secret_token[i];//存每個成員釋出的Ci
             	break;
-        	default:
-           		System.out.println("error, input");
+            	default:
+            	System.out.println("error, input");
             	continue;
-    	}
-	}
-		
+            }
+        }
+
 	    // for(int i = 1;i<=totalMember;i++){
 	    // nnn = num[i];
 	    // ttt = secret_token[i];
@@ -428,120 +429,283 @@ class Break_token {
 
         // GaussMatrix[] obj =new GaussMatrix[totalMember+1];
 
-		GaussMatrix obj = new GaussMatrix(2);
+        GaussMatrix obj = new GaussMatrix(2);
 		// obj.fillMatrix(user1[][]);
 		// obj.constants(secret_token_1[]);
-		for(int i =1;i<=totalMember;i++){
+        for(int i =1;i<=totalMember;i++){
+        	int flag = 0;
+        	switch(num[i]){
+        		case 1 :
+        		for(int k=1;k<=2;k++){
+        			for(int l=1;l<=2;l++){
+        				if(user1[k-1][l-1]!= null){
 
-			switch(num[i]){
-				case 1 :
-					w =user1[0][0];
-        			x =user1[0][1];
-        			y =user1[1][0];
-        			z =user1[1][1];
-        			ww = secret_token_1[1];
-        			xx = secret_token_1[2];
-        			break;
-				case 2 :
-					w =user2[0][0];
-        			x =user2[0][1];
-        			y =user2[1][0];
-        			z =user2[1][1];
-        			ww = secret_token_2[1];
-        			xx = secret_token_2[2];
-        			break;
-				case 3 :
-					w =user3[0][0];
-        			x =user3[0][1];
-        			y =user3[1][0];
-        			z =user3[1][1];
-        			ww = secret_token_3[1];
-        			xx = secret_token_3[2];
-        			break;
+        					obj.fillMatrix(user1[k-1][l-1],(k-1),(l-1));
+        					flag = 1;	   	 			
+        				}
+        				else {
+        					break;
+        				}
+        			}
+        		
+        		}
+        					if(flag ==1){
+        					ww = secret_token_1[1];
+        					xx = secret_token_1[2];
+        					obj.constants(ww,xx);
+        					obj.printMatrix();
+        					obj.eliminate();
+        					obj.solve();
+        					System.out.println("成員 " + num[i] + " 秘密權杖個別為：");
+        					obj.printSolution();    
+
+        					}
+
+        		break;
+        		case 2 :
+        		for(int k=1;k<=2;k++){
+        			for(int l=1;l<=2;l++){
+        				if(user2[k-1][l-1]!= null){
+
+        					obj.fillMatrix(user2[k-1][l-1],(k-1),(l-1));
+        					flag =1;
+        				}
+        				else{
+        					break;
+        				}
+        			}
+        		}
+        		if(flag ==1){
+        					ww = secret_token_2[1];
+			        		xx = secret_token_2[2];
+        					obj.constants(ww,xx);
+        					obj.printMatrix();
+        					obj.eliminate();
+        					obj.solve();
+        					System.out.println("成員 " + num[i] + " 秘密權杖個別為：");
+        					obj.printSolution();
+
+        		}
+
+
+        		break;
+        		case 3 :
+        		for(int k=1;k<=2;k++){
+        			for(int l=1;l<=2;l++){
+        				if(user3[k-1][l-1]!= null){
+
+        					obj.fillMatrix(user3[k-1][l-1],(k-1),(l-1));
+        					flag = 1;
+
+        				}
+        				else{
+        					break;
+        				}
+        			}
+        		}
+        		if(flag==1){
+        					ww = secret_token_3[1];
+			        		xx = secret_token_3[2];
+        					obj.constants(ww,xx);
+        					obj.printMatrix();
+        					obj.eliminate();
+        					obj.solve();
+        					System.out.println("成員 " + num[i] + " 秘密權杖個別為：");
+        					obj.printSolution();
+        		}
+
+        		break;
         		case 4 :
-					w =user4[0][0];
-        			x =user4[0][1];
-        			y =user4[1][0];
-        			z =user4[1][1];
-        			ww = secret_token_4[1];
-        			xx = secret_token_4[2];
-        			break;
+        		for(int k=1;k<=2;k++){
+        			for(int l=1;l<=2;l++){
+        				if(user4[k-1][l-1]!= null){     	   		 	
 
-  				case 5 :
-					w =user5[0][0];
-        			x =user5[0][1];
-        			y =user5[1][0];
-        			z =user5[1][1];
-        			ww = secret_token_5[1];
-        			xx = secret_token_5[2];
-        			break;
-
-  				case 6 :
-					w =user6[0][0];
-        			x =user6[0][1];
-        			y =user6[1][0];
-        			z =user6[1][1];
-        			ww = secret_token_6[1];
-        			xx = secret_token_6[2];
-        			break;
-
-  				case 7 :
-					w =user7[0][0];
-        			x =user7[0][1];
-        			y =user7[1][0];
-        			z =user7[1][1];
-        			ww = secret_token_7[1];
-        			xx = secret_token_7[2];
-        			break;
-  				case 8 :
-					w =user8[0][0];
-        			x =user8[0][1];
-        			y =user8[1][0];
-        			z =user8[1][1];
-        			ww = secret_token_8[1];
-        			xx = secret_token_8[2];
-        			break;
-  				case 9 :
-					w =user9[0][0];
-        			x =user9[0][1];
-        			y =user9[1][0];
-        			z =user9[1][1];
-        			ww = secret_token_9[1];
-        			xx = secret_token_9[2];
-        			break;
-
-
-  				case 10 :
-					w =user10[0][0];
-        			x =user10[0][1];
-        			y =user10[1][0];
-        			z =user10[1][1];
-        			ww = secret_token_10[1];
-        			xx = secret_token_10[2];
-        			break;
-
-			}
-
-     	obj.fillMatrix(w,x,y,z);
-     	obj.constants(ww,xx);
-     	obj.printMatrix();
-     	obj.eliminate();
-     	obj.solve();
-     	System.out.println("成員 " + num[i] + " 秘密權杖個別為：");
-     	obj.printSolution();
-
-		}
-
-		// ArrayList arraysize_1 = new ArrayList();
-      //   for(int i=1;i<=2;i++){
-     	//     for(int j=1;j<=2;j++){
-     	//         obj.fillMatrix(user1[i-1][j-1]);
-     	//     }
-     	//     obj.constants(secret_token_1[i]);//這邊輸入第x條常數的過增矩陣(方程式的解)
-     	// }
+        					obj.fillMatrix(user4[k-1][l-1],(k-1),(l-1));
+        					flag = 1;
+  	        		
+        				}
+        				else{
+        					break;
+        				}
+        			}
+        		}   
+        		if(flag ==1){
+			        		ww = secret_token_4[1];
+			        		xx = secret_token_4[2];
+        					obj.constants(ww,xx);
+        					obj.printMatrix();
+        					obj.eliminate();
+        					obj.solve();
+        					System.out.println("成員 " + num[i] + " 秘密權杖個別為：");
+        					obj.printSolution();   
+        		}     	
 
 
 
+        		break;
 
-	}
+        		case 5 :
+        		for(int k=1;k<=2;k++){
+        			for(int l=1;l<=2;l++){
+        				if(user5[k-1][l-1]!= null){    	
+
+        					obj.fillMatrix(user5[k-1][l-1],(k-1),(l-1));
+        					flag = 1;
+        				}
+        				else{
+        					break;
+        				}
+        			}
+        		}
+        		if(flag ==1 ){
+        					ww = secret_token_5[1];
+			        		xx = secret_token_5[2];
+        					obj.constants(ww,xx);
+        					obj.printMatrix();
+        					obj.eliminate();
+        					obj.solve();
+        					System.out.println("成員 " + num[i] + " 秘密權杖個別為：");
+        					obj.printSolution();  
+        		}
+        		break;
+        		case 6 :
+        		for(int k=1;k<=2;k++){
+        			for(int l=1;l<=2;l++){
+        				if(user6[k-1][l-1]!= null){ 
+
+        				obj.fillMatrix(user6[k-1][l-1],(k-1),(l-1));
+        				flag = 1;
+        				}
+        				else{
+        					break;
+        				}
+        			}
+        		}
+        			if(flag ==1){
+        				ww = secret_token_6[1];
+			        	xx = secret_token_6[2];
+		        		obj.constants(ww,xx);
+		        		obj.printMatrix();
+		        		obj.eliminate();
+		        		obj.solve();
+		        		System.out.println("成員 " + num[i] + " 秘密權杖個別為：");
+		        		obj.printSolution(); 
+		        	}
+
+       		
+        		break;
+        		case 7 :
+        		for(int k=1;k<=2;k++){
+        			for(int l=1;l<=2;l++){
+        				if(user7[k-1][l-1]!= null){ 
+        				obj.fillMatrix(user7[k-1][l-1],(k-1),(l-1));
+        				flag = 1;  
+        				}
+        				else{
+        					break;
+        				}
+        			}
+        		}
+        		if(flag ==1){
+		        		ww = secret_token_7[1];
+		        		xx = secret_token_7[2];
+		        		obj.constants(ww,xx);
+		        		obj.printMatrix();
+		        		obj.eliminate();
+		        		obj.solve();
+		        		System.out.println("成員 " + num[i] + " 秘密權杖個別為：");
+		        		obj.printSolution();   
+        		}
+
+   		
+        		break;
+        		case 8 :
+        		for(int k=1;k<=2;k++){
+        			for(int l=1;l<=2;l++){
+        				if(user8[k-1][l-1]!= null){ 
+
+        				obj.fillMatrix(user8[k-1][l-1],(k-1),(l-1));
+        				flag = 1;
+ 
+        				}
+        				else{
+        					break;
+        				}
+        			
+        			}
+        		}
+        		if(flag ==1){
+        			    ww = secret_token_8[1];
+		        		xx = secret_token_8[2];
+		        		obj.constants(ww,xx);
+		        		obj.printMatrix();
+		        		obj.eliminate();
+		        		obj.solve();
+		        		System.out.println("成員 " + num[i] + " 秘密權杖個別為：");
+		        		obj.printSolution();    
+        		}
+
+        		break;
+        		case 9 :
+        		for(int k=1;k<=2;k++){
+        			for(int l=1;l<=2;l++){
+        				if(user9[k-1][l-1]!= null){ 
+
+        				obj.fillMatrix(user7[k-1][l-1],(k-1),(l-1));
+        				flag = 1;  
+        				}
+        				else{
+        					break;
+        				}
+        			}
+        		}
+       			if(flag ==1){
+						ww = secret_token_9[1];
+        				xx = secret_token_9[2];
+		        		obj.constants(ww,xx);
+		        		obj.printMatrix();
+		        		obj.eliminate();
+		        		obj.solve();
+		        		System.out.println("成員 " + num[i] + " 秘密權杖個別為：");
+		        		obj.printSolution();   
+       			}
+
+        		break;
+
+
+        		case 10 :
+        		for(int k=1;k<=2;k++){
+        			for(int l=1;l<=2;l++){
+        				if(user10[k-1][l-1]!= null){ 
+
+        				obj.fillMatrix(user7[k-1][l-1],(k-1),(l-1));
+        				flag = 1;
+ 
+        				}
+        				else{
+        					break;
+        				}
+        			}
+        		}
+        		if(flag ==1 ){
+        			    ww = secret_token_10[1];
+        				xx = secret_token_10[2];
+		        		obj.constants(ww,xx);
+		        		obj.printMatrix();
+		        		obj.eliminate();
+		        		obj.solve();
+		        		System.out.println("成員 " + num[i] + " 秘密權杖個別為：");
+		        		obj.printSolution();    
+        		}
+        		break;
+        	}
+        	// obj.fillMatrix(w,x,y,z);
+        	// obj.constants(ww,xx);
+        	// obj.printMatrix();
+        	// obj.eliminate();
+        	// obj.solve();
+        	// System.out.println("成員 " + num[i] + " 秘密權杖個別為：");
+        	// obj.printSolution();
+        }
+    }
 }

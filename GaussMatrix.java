@@ -26,16 +26,13 @@ public class GaussMatrix
         solution=new int[numEq];
     }//初始化、建構子
 
-	public void fillMatrix(int aaa,int bbb,int ccc,int ddd){
+	// public void fillMatrix(int aaa,int bbb,int ccc,int ddd){
+    public void fillMatrix(Object aaa,int iii,int jjj){
 
-		m[0][0]=aaa;
-        m[0][1]=bbb;
-        m[1][0]=ccc;
-        m[1][1]=ddd;
-        // for(int i=0;i<2;i++){
-        //     for(int j=0;j<2;j++){
-        //         m[i][j]=ddd[i][j];
-        //     }//這邊再輸入每一個x,y,z的常數項
+        // for(int i=0;i<tmp;i++){
+        //     for(int j=0;j<tmp;j++){
+                m[iii][jjj]=(int)aaa;
+            // }//這邊再輸入每一個x,y,z的常數項
         // }
     }
 
@@ -76,7 +73,7 @@ public class GaussMatrix
         for(int i=0;i<numEq;i++){
             for(int j=0;j<numEq;j++){
                 if(m[i][j]>=0)
-                    System.out.print(" "+m[i][j]+((char)('A'+j))+" ");
+                    System.out.print("+ "+m[i][j]+((char)('A'+j))+" ");
                 else if(m[i][j]<0)
                     System.out.print(" "+m[i][j]+((char)('A'+j))+" ");
             }

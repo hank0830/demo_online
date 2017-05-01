@@ -14,12 +14,12 @@ class aaa{
 		int [] num = new int [11];//存每個成員為何
 		int [] key = new int [11];//存每個成員所輸入的權杖
 		int [] ans = new int [11];//存每個成員計算後的值
-		ArrayList<Integer> kkk = new ArrayList<Integer>();	
+		// ArrayList<Integer> kkk = new ArrayList<Integer>();	
 		int sum = 0;
 		int totalMember,xxx = 1; 
 		//totalMember : 共來幾個成員    
 		//sum ：來的成員所用它秘密權杖計算完後的加總
-		
+		// Test test = new test();
 		// int num1,key1,num2,key2,num3,key3;
 		// int first,second,third,total;
 		test.Poly(a);//把係數帶入多項式細算
@@ -40,7 +40,7 @@ class aaa{
 			System.out.print("秘密權杖為：");
 			System.out.println(test.eval(i)%modnumber);
 			b[i] = test.eval(i)%modnumber;
-			System.out.println("int[]b  第"+ i + "格存" + b[i]);
+			// System.out.println("int[]b  第"+ i + "格存" + b[i]);
 		}
 
 		System.out.println();
@@ -55,7 +55,7 @@ class aaa{
 		ModInverse[] inv = new ModInverse[totalMember+1];
 		int[] qq = new int[totalMember+1];
 		//處理負數  mod 
-		for(int i = 1 ;i <=totalMember ;i++){
+		for(int i = 1 ;i <=totalMember ;i++){//enter everyone's key
 			System.out.println("輸入第" + i + "位身份");
 			num[i] = scn.nextInt();
 			System.out.println("輸入第" + i + "秘密權杖");
