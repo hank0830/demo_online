@@ -109,6 +109,7 @@ class asy_aaa{
 					upon_1 = upon_1 * (w1-num[j]);
 					if(upon_1==0){
 						upon_1+=1;
+					}
 	                // 第一條方程式 計算分子  (wj-xr)
 
 	                upon_2 = upon_2 * (w2-num[j]);
