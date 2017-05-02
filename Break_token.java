@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 class Break_token {
 	public static void main(String[] args){
-		int w=0,x=0,y=0,z=0,ww=0,xx=0;
+		int ww=0,xx=0;
 		int ttt = 0,nnn = 0,jjj = 0;//jjj是要管理print出來的未知數A、B
 		Scanner check = new Scanner(System.in);
 		ArrayList<MyData> list = new ArrayList<MyData>();
@@ -31,8 +31,8 @@ class Break_token {
 		int[] secret_token_10= new int[3];
 
 		String n,s;
-			int w1 = 6, w2 = 7,d1 = 1,d2 = 12;//輸入的兩個正整數
-			int modnumber = 0;//選擇的質數
+			int w1 = 0, w2 = 0,d1 = 0,d2 = 0;//輸入的兩個正整數
+			int modnumber = 13;//選擇的質數
 			int num_ans = 0;
 			int totalMember = 0;//總共來幾位成員
 			int mon = 1,upon_1 = 1,upon_2 = 1,montotal=1,ooo = 1,xxx=1;
@@ -58,12 +58,25 @@ class Break_token {
 			test.Poly(a);//計算F1方程式結果
 			test1.Poly(b);//計算F2方程式結果
 			Scanner scn = new Scanner(System.in);//輸入
-			System.out.println("我們選擇k=2，兩條方程式為：");
+			System.out.println("我們選擇k=2，質數為 13，兩條方程式為：");
 			System.out.println("第一條方程式：f(x)=  3X^2 + 2x + 1 ");
 			System.out.println("第二條方程式：f(x)=  4X^2 - 5x + 3 ");
-			System.out.println("每條方程式選擇兩個正整數:w1=6 ; w2=7 ;d1=1 ; d2=12");//目前固定兩個方程式的正整數
-			System.out.println("請選擇一個質數");
-			modnumber = scn.nextInt();
+			System.out.println("請輸入 2條(k=2) 方程式之 Wj、Dj：");
+			System.out.print("W1 = ");
+			w1 =scn.nextInt();
+			System.out.println();
+			System.out.print("W2 = ");
+			w2 =scn.nextInt();
+			System.out.println();
+			System.out.print("D1 = ");
+			d1 =scn.nextInt();
+			System.out.println();
+			System.out.print("D2 = ");
+			d2 =scn.nextInt();
+			System.out.println();
+			// System.out.println("每條方程式選擇兩個正整數:w1=6 ; w2=7 ;d1=1 ; d2=12");//目前固定兩個方程式的正整數
+			// System.out.println("請選擇一個質數");
+			// modnumber = scn.nextInt();
 
 			do{	
 
@@ -447,7 +460,6 @@ class Break_token {
         					break;
         				}
         			}
-        		
         		}
         					if(flag ==1){
         					ww = secret_token_1[1];
@@ -631,7 +643,6 @@ class Break_token {
         				else{
         					break;
         				}
-        			
         			}
         		}
         		if(flag ==1){
@@ -650,7 +661,6 @@ class Break_token {
         		for(int k=1;k<=2;k++){
         			for(int l=1;l<=2;l++){
         				if(user9[k-1][l-1]!= null){ 
-
         				obj.fillMatrix(user7[k-1][l-1],(k-1),(l-1));
         				flag = 1;  
         				}
@@ -699,13 +709,6 @@ class Break_token {
         		}
         		break;
         	}
-        	// obj.fillMatrix(w,x,y,z);
-        	// obj.constants(ww,xx);
-        	// obj.printMatrix();
-        	// obj.eliminate();
-        	// obj.solve();
-        	// System.out.println("成員 " + num[i] + " 秘密權杖個別為：");
-        	// obj.printSolution();
         }
     }
 }

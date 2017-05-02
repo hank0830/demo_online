@@ -1,13 +1,3 @@
-/**
- * The Program Takes Number of Eqautions and Then Creates An
- * Square Matrix of Order x Order and Formulates a Top Triangle
- * My Continuous Elimination and Then Solves the Set of Equations
- * to Find the Values of the Order number of Variables.
- * @author SHANTANU KHAN
- * @mail shantanukhan1995@gmail.com
- * @website 0code.blogspot.com
- * Program Type : BlueJ Program - Java
- */
 import java.util.*;
 public class GaussMatrix
 {
@@ -157,6 +147,7 @@ public class GaussMatrix
                 solution[i]+=13;
             }
         }
+        return;
     }
     
     // public static void main(String args[])
